@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Input Text to Div Example</title>
+  <style>
+    #box {
+      height: 190.5mm; /* Half of the A4 paper width */
+      width: 274.32mm; /* Half of the A4 paper height */
+      border: 1px solid black; /* Optional border for visualization */
+      background-image: url('2.jpg'); /* Replace 'your-image.jpg' with the path to your background image */
+      background-size: cover; /* Adjust the sizing as needed */
+      background-repeat: no-repeat;
+    }
+    .text {
+      text-align: center; /* Center text horizontally */
+      
+    }
+  </style>
+</head>
+<body>
+  <h3>Certificate </h3>
+  <p><b>Note:</b>1.You can enter the grade/section and teacher once and just change the name of students 2. Click print and adjust the settings there if nessesary</p>
+  
+  <!-- Input Text Fields -->
+  <label>Name of Students: </label><input type="text" id="textInput1" placeholder="Name">
+  <label>Grade and Section: </label><input type="text" id="textInput2" placeholder="Grade 1-Section">
+  <label>Teacher: </label><input type="text" id="textInput3" placeholder="Teacher">
+<input type="button" onclick="printDiv('h')" value="print" /> 
+<hr>
+  <!-- Display Divs -->
+  <div id="h">
+  <div id="box">
+    <div class="text" id="textDisplay1" style="padding-top: 230px; font-family: Arial Black, sans-serif; font-size: 48px; margin-bottom: 0px; padding-bottom: 0;"></div>
+    <div class="text"id="textDisplay2" style="margin-top:0px; padding-top: 0px;font-family: Cambria, sans-serif; font-size: 26px; color: rgb(50, 89, 158); font-weight:bold;"></div>
+    <div class="text"id="textDisplay3" style="margin-top:250px; padding-top: 0px;font-family: Arial Black, sans-serif; font-size: 12px; cfont-weight:bold;"></div>
+  </div>
+</div>
+  <script>
+    // Get references to the input and display elements
+    const textInputs = [
+      document.getElementById("textInput1"),
+      document.getElementById("textInput2"),
+      document.getElementById("textInput3")
+    ];
+
+    const textDisplays = [
+      document.getElementById("textDisplay1"),
+      document.getElementById("textDisplay2"),
+      document.getElementById("textDisplay3")
+    ];
+
+    // Add event listeners to the input fields
+    textInputs.forEach((input, index) => {
+      input.addEventListener("input", function() {
+        // Get the value of the input field
+        const inputText = input.value;
+
+        // Update the content of the corresponding div
+        textDisplays[index].textContent = inputText;
+      });
+    });
+  </script>
+</body>
+</html>
+ <script language="javascript">
+      function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
